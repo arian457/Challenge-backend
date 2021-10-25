@@ -30,22 +30,13 @@ const _emailRequired = check("email", "Email is required").notEmpty();
 const _validEmail = check("email", "A valid email is required").isEmail();
 const _passwordRequired = check("password", "Password is required").notEmpty();
 
-const _emailIsNew = check("email").custom(async email => {
- 
-  const userFound = await User.findOne({email});
-  console.log(userFound)
-  //? Si se encuentra un usuario con el mismo email, se lanza un error
-  if (userFound) {
-    throw new Error("The email provided is already taken. Try with another");
-  }
-});
+
 
 const postRegisterValidations = [
   _firstNameRequired,
   _lastNameRequired,
   _emailRequired,
   _validEmail,
-  _emailIsNew,
   _passwordRequired,
   checkValidations,
 ];

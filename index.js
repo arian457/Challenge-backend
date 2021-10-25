@@ -29,9 +29,9 @@ app.use(async (req,res,next) => {
 });
 app.use(ErrorController);
 
-app.listen('3001' , async ()=> {
+app.listen(config.port , async ()=> {
     try {
-        console.log('Upload in localhost:3001'); 
+        console.log(`Upload in ${config.port}`); 
       await connectdb( config.devUrl);
     } catch (error) {
        console.log(error); 
